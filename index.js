@@ -76,7 +76,7 @@ client.on('message', message =>{
         const newEmbed = new Discord.MessageEmbed()
         .setColor("RANDOM")
         .setTitle("Lionbot Commands")
-        .setDescription("\n **Moderation** \n\nBan\n\nKick\n\nMute\n\nUnmute\n\nSlowmode\n\n**Fun**\n\nPing\n\n**INFO**\n\nHelp\n\nRules\n\nAvatar")
+        .setDescription("\n **Moderation** \n\nBan\n\nKick\n\nMute\n\nUnmute\n\nSlowmode\n\n**Fun**\n\nPing\n\n**INFO**\n\nHelp\n\nAvatar")
         .setFooter("Prefix: !")
 
         message.author.send(newEmbed)
