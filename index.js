@@ -120,4 +120,4 @@ client.on('ready', () => {
     }, 10000); // Runs this every 10 seconds.
 });
 
-client.login('NzI1MDM0MjY3MDc5MzQ0MTU4.XvI2xw.Lejj4Wyn3kiVGbD8-OaMaEbEzM4');
+client.login('NzI1MDM0MjY3MDc5MzQ0MTU4.XvI2xw.6n5FTo-lkQlpLpObx5p4371Va3c');
