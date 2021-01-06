@@ -99,16 +99,22 @@ client.on('message', (message) => antiSpam.message(message));
 
 client.on('message', msg => {
     let wordArrary = msg.content.toLowerCase().split(" ");
-  
-    let filterWords = ["fuck", "f4ck", "cock", "c0ck", "shit", "bitch", "b1tch", "pussy", "ass", "sex", "cum", "bastard", "arse", "asshole", "bollocks", "brotherfucker", "bugger", "bullshit", "child-fucker", "Christ on a bike", "Christ on a cracker", "crap", "cunt", "damn", "eefing", "fatherfucker", "frigger", "goddamn", "godsdamn", "hell", "holyshit", "horseshit", "porn", "porm", "Jesus fuck", "Jesus wept", "motherfucker", "nigga", "prick", "shitass", "sisterfucker", "slut", "son of a bitch", "son of a whore", "twat"];
+	const target = msg.author;
+	const member = msg.member;
+    let filterWords = ["fuck", "f4ck", "cock", "c0ck", "shit", "bitch", "b1tch", "pussy", "ass", "sex", "cum", "bastard", "arse", "asshole", "bollocks", "brotherfucker", "bugger", "bullshit", "child-fucker", "Christ on a bike", "Christ on a cracker", "crap", "cunt", "damn", "eefing", "fatherfucker", "frigger", "goddamn", "godsdamn", "hell", "holyshit", "horseshit", "porn", "porm", "Jesus fuck", "Jesus wept", "motherfucker", "nigga", "prick", "shitass", "sisterfucker", "slut", "son of a bitch", "son of a whore", "twat", "fu", "fuc", "fuk"];
   
     for(var i = 0; i < filterWords.length; i++) {
       if(wordArrary.includes(filterWords[i])) {
-        msg.delete();
-        msg.channel.send(
-          `${msg.author.username
-          }, you can't send bad words here!\nRule 2: "Swearing is not permitted in this server. Violation of this rule will lead to an immediate ban."`
-        );
+        if(!msg.author.bot){
+			if (msg.channel.type === 'dm') {
+				return
+			} else if(!member.hasPermission('MANAGE_MESSAGES')) {
+				const memberTarget = msg.guild.members.cache.get(target.id);
+				msg.delete();
+				memberTarget.kick();
+				msg.channel.send(`${msg.author} has been kicked from using bad words!`);
+			}
+        }
       }
     }
 });
